@@ -1,5 +1,19 @@
-import { defineCustomElement } from 'vue'
-import MiComponente from './components/MiComponente.vue' // Asegúrate de que el archivo exista
+import { createApp } from 'vue'
+import './style.css'
+import App from './App.vue'
+import MiComponente from './components/MiComponente.vue'
 
-const MiComponenteCE = defineCustomElement(MiComponente)
+// Crear la aplicación Vue
+const app = createApp(App)
+app.mount('#app')
+
+// También registrar como web component para uso externo
+import { defineCustomElement } from 'vue'
+import styleCSS from './style.css?inline'
+
+// Crear web component con estilos incluidos
+const MiComponenteCE = defineCustomElement({
+  ...MiComponente,
+  styles: [styleCSS]
+})
 customElements.define('mi-componente', MiComponenteCE)
