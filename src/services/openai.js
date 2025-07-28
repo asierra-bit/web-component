@@ -26,7 +26,7 @@ export class ChatService {
 
       // Llamar a la API de OpenAI
       const completion = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4o-mini',
         messages: this.messages,
         max_tokens: 500,
         temperature: 0.7,
