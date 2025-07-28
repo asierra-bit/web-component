@@ -11,7 +11,7 @@ export class ChatService {
     this.messages = [
       {
         role: 'system',
-        content: 'Eres un asistente de IA útil y amigable especializado en desarrollo web. Responde de manera concisa y práctica.'
+        content: 'Eres un asistente de IA útil y amigable especializado en una plataforma escolar llamada Academic. Responde de manera concisa y práctica.'
       }
     ];
   }
