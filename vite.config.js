@@ -11,6 +11,15 @@ export default defineConfig({
       preventAssignment: true
     })
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://rbpiwu0vm6.execute-api.us-east-1.amazonaws.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/documentation/v1')
+      }
+    }
+  },
   build: {
     lib: {
       entry: 'src/main.js',

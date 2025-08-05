@@ -1,10 +1,8 @@
-import OpenAI from 'openai';
-
-// Configuración de OpenAI
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true // Solo para desarrollo, en producción usar un backend
-});
+// Configuración de la API de AWS
+// En desarrollo usa el proxy, en producción usa la URL directa
+const API_URL = import.meta.env.DEV 
+  ? '/api' 
+  : 'https://rbpiwu0vm6.execute-api.us-east-1.amazonaws.com/documentation/v1';
 
 export class ChatService {
   constructor() {
@@ -24,15 +22,33 @@ export class ChatService {
         content: userMessage
       });
 
-      // Llamar a la API de OpenAI
-      const completion = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
-        messages: this.messages,
-        max_tokens: 500,
-        temperature: 0.7,
+      // Construir el prompt con el historial de mensajes
+      const fullPrompt = this.messages.map(msg => {
+        if (msg.role === 'system') return `Sistema: ${msg.content}`;
+        if (msg.role === 'user') return `Usuario: ${msg.content}`;
+        if (msg.role === 'assistant') return `Asistente: ${msg.content}`;
+        return msg.content;
+      }).join('\n\n');
+
+      // Llamar a la nueva API de AWS
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: fullPrompt
+        })
       });
 
-      const aiResponse = completion.choices[0].message.content;
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      // Extraer la respuesta de la IA (ajustar según la estructura de respuesta de tu API)
+      const aiResponse = data.response || data.message || data.content || 'No se recibió respuesta válida';
 
       // Agregar respuesta de la IA al historial
       this.messages.push({
@@ -47,12 +63,12 @@ export class ChatService {
       };
 
     } catch (error) {
-      console.error('Error calling OpenAI API:', error);
+      console.error('Error calling AWS API:', error);
       
       // Respuesta de fallback si hay error
       return {
         success: false,
-        message: 'Lo siento, hubo un error al procesar tu mensaje. Por favor, verifica tu API key de OpenAI.',
+        message: 'Lo siento, hubo un error al procesar tu mensaje. Por favor, verifica la conexión con el servidor.',
         timestamp: new Date().toISOString(),
         error: error.message
       };
