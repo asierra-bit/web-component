@@ -164,10 +164,7 @@
 
 /* Modo oscuro (preparado para futuras implementaciones) */
 @media (prefers-color-scheme: dark) {
-  .bg-white {
-    background-color: #1f2937;
-    color: #f9fafb;
-  }
+ 
   
   .text-gray-800 {
     color: #f9fafb;
