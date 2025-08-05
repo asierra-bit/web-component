@@ -23,15 +23,15 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/main.js',
-      name: 'MiComponente',
-      fileName: 'mi-componente',
+      name: 'NexusChat',
+            fileName: 'nexus-chat',
       formats: ['iife']
     },
     rollupOptions: {
       output: {
         inlineDynamicImports: true,
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'mi-componente.css'
+          if (assetInfo.name === 'style.css') return 'nexus-chat.css'
           return assetInfo.name
         }
       },

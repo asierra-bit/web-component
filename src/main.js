@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import MiComponente from './components/MiComponente.vue'
+import NexusChat from './components/NexusChat.vue'
 
 // Crear la aplicación Vue
 const app = createApp(App)
@@ -12,8 +12,8 @@ import { defineCustomElement } from 'vue'
 import styleCSS from './style.css?inline'
 
 // Crear web component con estilos incluidos
-const MiComponenteCE = defineCustomElement({
-  ...MiComponente,
+const NexusChatCE = defineCustomElement({
+  ...NexusChat,
   styles: [styleCSS]
 })
-customElements.define('mi-componente', MiComponenteCE)
+customElements.define('nexus-chat', NexusChatCE)

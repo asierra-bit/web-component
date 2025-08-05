@@ -1,5 +1,5 @@
 <script setup>
-import MiComponente from './components/MiComponente.vue'
+import NexusChat from './components/NexusChat.vue'
 </script>
 
 <template>
@@ -41,10 +41,10 @@ import MiComponente from './components/MiComponente.vue'
     </div>
     
     <!-- Components with different positions -->
-    <MiComponente message="Top Right" position="top-right" />
-    <MiComponente message="Top Left" position="top-left" />
-    <MiComponente message="Bottom Left" position="bottom-left" />
-    <MiComponente message="Bottom Right" position="bottom-right" />
+    <NexusChat message="Top Right" position="top-right" />
+    <NexusChat message="Top Left" position="top-left" />
+    <NexusChat message="Bottom Left" position="bottom-left" />
+    <NexusChat message="Bottom Right" position="bottom-right" />
   </div>
 </template>
 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Chat - Ejemplo de Uso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .code-block {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .usage-example {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Nexus Chat - Web Component</h1>
+        
+        <div class="usage-example">
+            <h3>📋 Cómo usar el componente:</h3>
+            <p>Para usar el componente Nexus Chat en cualquier página web, simplemente incluye el archivo JavaScript y usa la etiqueta personalizada:</p>
+            
+            <div class="code-block">
+                &lt;!-- Incluir el script del componente --&gt;<br>
+                &lt;script src="./dist/nexus-chat.iife.js"&gt;&lt;/script&gt;<br>
+                &lt;link rel="stylesheet" href="./dist/nexus-chat.css"&gt;<br><br>
+                
+                &lt;!-- Usar el componente --&gt;<br>
+                &lt;nexus-chat position="bottom-right"&gt;&lt;/nexus-chat&gt;
+            </div>
+            
+            <h3>🎯 Posiciones disponibles:</h3>
+            <ul>
+                <li><code>top-right</code> - Esquina superior derecha</li>
+                <li><code>top-left</code> - Esquina superior izquierda</li>
+                <li><code>bottom-left</code> - Esquina inferior izquierda</li>
+                <li><code>bottom-right</code> - Esquina inferior derecha (por defecto)</li>
+            </ul>
+            
+            <h3>💡 Ejemplos de uso:</h3>
+            <div class="code-block">
+                &lt;!-- Chat en esquina inferior derecha --&gt;<br>
+                &lt;nexus-chat&gt;&lt;/nexus-chat&gt;<br><br>
+                
+                &lt;!-- Chat en esquina superior izquierda --&gt;<br>
+                &lt;nexus-chat position="top-left"&gt;&lt;/nexus-chat&gt;<br><br>
+                
+                &lt;!-- Chat con mensaje personalizado --&gt;<br>
+                &lt;nexus-chat message="¡Hola! Soy tu asistente" position="bottom-left"&gt;&lt;/nexus-chat&gt;
+            </div>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            ✨ El componente se registra automáticamente como <strong>&lt;nexus-chat&gt;</strong> cuando cargas el script.
+        </p>
+    </div>
+
+    <!-- Aquí está el componente en acción -->
+    <nexus-chat position="bottom-right"></nexus-chat>
+
+    <!-- Cargar el componente desde el build de desarrollo -->
+    <script type="module">
+        // En desarrollo, el componente ya está disponible
+        // En producción, cargarías: <script src="./dist/nexus-chat.iife.js"></script>
+    </script>
+</body>
+</html>
